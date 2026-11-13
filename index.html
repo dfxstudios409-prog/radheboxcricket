@@ -1,0 +1,337 @@
+@@ -0,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Radhe Box Cricket – Book Your Slot</title>
+<style>
+:root{--bg:#f6f8f3;--card:#fff;--ink:#14210f;--mute:#5b6b52;--green:#1f8a3b;--dark:#0e3d1c;--accent:#f5b81c;--line:#dfe6d8;--red:#c0392b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1a10;--card:#15261a;--ink:#eef5e9;--mute:#9db493;--green:#3fc15e;--dark:#06220f;--line:#243a29;--red:#ff7b6b}}
+:root[data-theme="dark"]{--bg:#0d1a10;--card:#15261a;--ink:#eef5e9;--mute:#9db493;--green:#3fc15e;--dark:#06220f;--line:#243a29;--red:#ff7b6b}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.55}
+[hidden]{display:none!important}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
+nav b{font-size:20px;letter-spacing:.5px}
+nav a{color:#fff;text-decoration:none;margin-left:16px;font-size:14px;opacity:.9}
+.hero{background:linear-gradient(160deg,#0e3d1c,#1f8a3b);color:#fff;padding-bottom:64px}
+.hero h1{font-size:clamp(34px,7vw,60px);line-height:1.05;margin:48px 0 14px;font-weight:900}
+.hero h1 span{color:var(--accent)}
+.hero p{max-width:520px;font-size:18px;opacity:.92}
+.btn{display:inline-block;background:var(--accent);color:#1a1a1a;font-weight:700;padding:13px 24px;border-radius:999px;text-decoration:none;border:0;font-size:16px;cursor:pointer}
+.btn.sm{padding:8px 14px;font-size:14px}
+.btn.alt{background:var(--green);color:#fff}
+.stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:36px}
+.stats div{font-size:13px;opacity:.9}.stats b{display:block;font-size:26px;color:var(--accent)}
+section{padding:56px 0}
+h2{font-size:30px;margin:0 0 8px}
+.sub{color:var(--mute);margin:0 0 28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px}
+.grid .card{margin:0}
+.card h3{margin:0 0 6px;font-size:18px}.card p{margin:0;color:var(--mute);font-size:15px}
+.price{font-size:30px;font-weight:800;color:var(--green)}.price small{font-size:14px;color:var(--mute);font-weight:500}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin:14px 0 22px}
+.slot{padding:10px 6px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;cursor:pointer;font-size:14px}
+.slot.sel{background:var(--green);color:#fff;border-color:var(--green)}
+.slot[disabled]{opacity:.45;cursor:not-allowed}.slot[disabled] .t{text-decoration:line-through}.slot small{display:block;font-size:11px;margin-top:2px}
+label{display:block;font-size:14px;font-weight:600;margin:12px 0 4px}
+input,select{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:520px){.row,.row3{grid-template-columns:1fr}nav a{display:none}}
+.total{font-size:18px;margin:18px 0 12px;font-weight:700}
+ul.rules{padding-left:20px;color:var(--mute)}ul.rules li{margin:6px 0}
+footer{background:var(--dark);color:#cfe3c8;padding:32px 0;font-size:14px}
+footer a{color:#cfe3c8}
+.adm{padding:24px 0 60px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.top h2{margin:0;font-size:26px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:16px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+.kpi b{display:block;font-size:24px;color:var(--green)}.kpi span{font-size:13px;color:var(--mute)}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{color:var(--mute);font-weight:600}
+td select{padding:6px;font-size:14px}
+.del{background:none;border:0;color:var(--red);cursor:pointer;font-size:14px}
+.err{color:var(--red);min-height:20px;margin:8px 0}
+.login{max-width:380px;margin:60px auto}
+.lnk{color:var(--green);margin-left:10px;font-size:14px}
+.slotgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px;margin-top:14px}.chk{display:flex;align-items:center;gap:8px;margin:0;padding:10px;border:1px solid var(--line);border-radius:10px;font-weight:500;font-size:14px;cursor:pointer}.chk input{width:18px;height:18px;padding:0;flex:none}.chk.on{background:var(--green);color:#fff;border-color:var(--green)}.chk small{opacity:.85}
+ol.fx{margin:6px 0 0;padding-left:20px;color:var(--mute);font-size:15px}.rf{margin-top:12px}
+#dlg{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:50;padding:20px}.dbox{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:22px;max-width:360px;width:100%;text-align:center}.dbox p{color:var(--ink);margin:0 0 16px;font-size:16px}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(24px + env(safe-area-inset-bottom,0px));background:var(--dark);color:#fff;padding:12px 18px;border-radius:999px;z-index:60;font-size:14px;max-width:90%;text-align:center}
+.tbn{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;background:rgba(255,255,255,.12);border:1px solid rgba(245,184,28,.7);border-radius:16px;padding:12px 16px;margin:0 0 22px;color:#fff;text-decoration:none;font-size:14px;max-width:560px}.tbn b{color:var(--accent)}
+.dot{width:10px;height:10px;border-radius:50%;background:#ff4d4d;box-shadow:0 0 0 0 rgba(255,77,77,.7);animation:pl 1.6s infinite}@keyframes pl{70%{box-shadow:0 0 0 8px rgba(255,77,77,0)}100%{box-shadow:0 0 0 0 rgba(255,77,77,0)}}
+.note{font-size:13px;color:var(--mute);margin-top:10px}
+.hero .wrap{position:relative}.hero .wrap>*{position:relative;z-index:1}.hero .wrap>.ball{position:absolute;z-index:0;right:6px;top:84px;width:clamp(110px,24vw,250px);pointer-events:none;filter:drop-shadow(0 14px 18px rgba(0,0,0,.35));animation:fl 5s ease-in-out infinite}.ball svg{display:block;width:100%;height:auto}
+@keyframes fl{0%,100%{transform:translateY(0) rotate(-10deg)}50%{transform:translateY(-14px) rotate(10deg)}}
+@media(prefers-reduced-motion:reduce){.ball{animation:none!important}}
+.igc{display:flex;gap:26px;align-items:center;flex-wrap:wrap}.qr{background:#fff;padding:8px;border-radius:14px;width:170px;height:170px;flex:none}.qr svg{display:block;width:100%;height:100%}.igc h2{margin-bottom:8px}
+html:root,html:root:not([data-theme="light"]),html:root[data-theme="dark"]{--bg:#0a1330;--card:#101c47;--ink:#f2f5ff;--mute:#9fb0d9;--green:#f5b81c;--dark:#060c20;--accent:#f5b81c;--line:#23326a;--red:#ff7b6b}
+body{background:radial-gradient(900px 420px at 50% -80px,rgba(47,107,255,.25),transparent 65%) no-repeat,var(--bg)}
+.hero{background:radial-gradient(circle at 12% -5%,rgba(245,184,28,.30),transparent 34%),radial-gradient(circle at 90% -5%,rgba(90,150,255,.40),transparent 38%),linear-gradient(180deg,#0d1f58,#091438 75%,#0a1330);border-bottom:3px solid var(--accent)}
+.btn.alt{background:#2f6bff;color:#fff}
+.slot.sel,.chk.on{color:#0a1330}
+.card,.kpi{box-shadow:0 6px 24px rgba(0,0,0,.25)}
+footer{background:var(--dark);color:#b7c5ee}footer a{color:var(--accent)}
+.mb{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div id="site">
+<header class="hero"><div class="wrap"><div class="ball" aria-hidden="true"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="bl" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#ff7a6a"/><stop offset=".5" stop-color="#c8102e"/><stop offset="1" stop-color="#5e0816"/></radialGradient></defs><circle cx="100" cy="100" r="94" fill="url(#bl)"/><path d="M48 26C94 72 94 128 48 174" fill="none" stroke="#f6e8cf" stroke-width="3.2" stroke-dasharray="6 6" stroke-linecap="round"/><path d="M62 20C110 70 110 130 62 180" fill="none" stroke="#f6e8cf" stroke-width="3.2" stroke-dasharray="6 6" stroke-linecap="round"/><path d="M48 26C94 72 94 128 48 174M62 20C110 70 110 130 62 180" fill="none" stroke="#00000033" stroke-width="9" stroke-linecap="round" transform="translate(5 3)" opacity=".35"/><ellipse cx="68" cy="58" rx="30" ry="18" fill="#fff" opacity=".22" transform="rotate(-30 68 58)"/></svg></div>
+<nav><b>🏏 RADHE BOX CRICKET</b><div><a href="#pricing">Pricing</a><a href="#tour">Tournaments</a><a href="#book">Book</a><a href="#rules">Rules</a></div></nav>
+<h1>Play under the <span>lights.</span><br>Own the night.</h1>
+<p>Professional turf, floodlights and nets all around. Book a slot for you and your players in under a minute.</p>
+<div id="tbn"></div>
+<a class="btn" href="#book">Book a slot</a>
+<div class="stats"><div><b>6–8</b>players per side</div><div><b>24×7</b>open till late</div><div><b>LED</b>floodlit turf</div></div>
+</div></header>
+<section><div class="wrap">
+<h2>Why play here</h2><p class="sub">Everything you need for a proper match.</p>
+<div class="grid">
+<div class="card"><h3>🌱 Premium turf</h3><p>Soft, even synthetic grass that’s easy on the knees and true on the bounce.</p></div>
+<div class="card"><h3>💡 Floodlights</h3><p>Bright, glare-free LED lighting for crisp night games.</p></div>
+<div class="card"><h3>🥤 Café &amp; seating</h3><p>Cold drinks, snacks and a shaded seating area for the crowd.</p></div>
+<div class="card"><h3>🏆 Tournaments</h3><p>Corporate days, birthday matches and weekend leagues, we host them all.</p></div>
+</div></div></section>
+<section id="pricing" style="padding-top:0"><div class="wrap">
+<h2>Pricing</h2><p class="sub">Per hour, per team.</p>
+<div class="grid" id="pr"></div></div></section>
+<section id="tour" style="padding-top:0"><div class="wrap"><h2>🏆 Tournaments</h2><p class="sub">Register your team for upcoming tournaments.</p><div id="tl"></div></div></section>
+<section id="book" style="padding-top:0"><div class="wrap">
+<h2>Book your slot</h2><p class="sub">Pick a date and time, and we’ll confirm on WhatsApp.</p>
+<div class="row" style="margin-bottom:14px"><button class="btn sm alt" id="m1" type="button">Single slot</button><button class="btn sm" id="m2" type="button">🏆 Tournament (full / half day)</button></div>
+<div class="card" id="bk1">
+<div class="row">
+<div><label for="date">Date</label><input type="date" id="date"></div>
+<div><label for="hrs">Duration</label><select id="hrs"><option value="1">1 hour</option><option value="2">2 hours</option><option value="3">3 hours</option><option value="4">4 hours</option><option value="5">5 hours</option></select></div>
+</div>
+<label>Time slot</label>
+<div class="slots" id="slots"></div>
+<div class="row">
+<div><label for="name">Your name</label><input id="name" placeholder="Full name"></div>
+<div><label for="phone">Phone</label><input id="phone" type="tel" placeholder="Mobile number"></div>
+</div>
+<label for="players">Number of players coming</label><input id="players" type="number" inputmode="numeric" min="1" max="40" value="8">
+<div class="total" id="total">Select a slot to see the price</div>
+<button class="btn" id="go">Confirm on WhatsApp</button></div>
+<div class="card" id="bk2" hidden>
+<p class="sub" style="margin-bottom:6px">Book the ground for your own tournament: a full day or a half day.</p>
+<label for="tkind">Booking type</label><select id="tkind"><option value="full">Full day (6 AM – 12 AM)</option><option value="am">Half day, morning (6 AM – 3 PM)</option><option value="pm">Half day, evening (3 PM – 12 AM)</option></select>
+<div class="row"><div><label for="tdate">Start date</label><input type="date" id="tdate"></div><div><label for="tdays">Days</label><select id="tdays"><option value="1">1 day</option><option value="2">2 days</option><option value="3">3 days</option></select></div></div>
+<div class="row"><div><label for="tname">Tournament name</label><input id="tname" placeholder="Corporate Cup"></div><div><label for="tteams">Number of teams</label><input id="tteams" type="number" value="8"></div></div>
+<div class="row"><div><label for="torg">Organizer name</label><input id="torg"></div><div><label for="tph">Phone</label><input id="tph" type="tel"></div></div>
+<div class="total" id="ttotal"></div>
+<button class="btn" id="tgo">Book tournament on WhatsApp</button>
+</div></div></section>
+<section id="cancel" style="padding-top:0"><div class="wrap"><h2>Cancel a booking</h2><p class="sub">Enter the phone number you booked with. Please cancel at least 3 hours before your slot.</p><div class="card"><div class="row"><div><label for="cph">Phone number</label><input id="cph" type="tel" inputmode="tel" placeholder="Mobile number"></div><div><label>&nbsp;</label><button class="btn" id="cfind" type="button">Find my bookings</button></div></div><div id="cl"></div></div></div></section>
+<section id="rules" style="padding-top:0"><div class="wrap">
+<h2>House rules</h2>
+<ul class="rules">
+<li>Non-marking shoes or sports sandals only.</li>
+<li>Arrive 10 minutes early; your slot ends on time.</li>
+<li>Cancel at least 3 hours ahead for a free reschedule.</li>
+<li>No smoking or alcohol on the premises.</li>
+</ul></div></section>
+<section id="location" style="padding-top:0"><div class="wrap"><div class="card igc"><div class="qr"><svg viewBox="0 0 53 53" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QR code for the Radhe Box Cricket location on Google Maps" shape-rendering="crispEdges"><rect width="100%" height="100%" fill="#fff"/><path d="M4 4h7v1h-7zM13 4h3v1h-3zM17 4h5v1h-5zM25 4h1v1h-1zM29 4h1v1h-1zM33 4h4v1h-4zM40 4h1v1h-1zM42 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM14 5h1v1h-1zM16 5h2v1h-2zM19 5h1v1h-1zM22 5h2v1h-2zM25 5h7v1h-7zM35 5h3v1h-3zM39 5h1v1h-1zM42 5h1v1h-1zM48 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM12 6h3v1h-3zM17 6h1v1h-1zM22 6h2v1h-2zM27 6h3v1h-3zM33 6h5v1h-5zM39 6h1v1h-1zM42 6h1v1h-1zM44 6h3v1h-3zM48 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM12 7h1v1h-1zM14 7h1v1h-1zM18 7h2v1h-2zM21 7h4v1h-4zM27 7h1v1h-1zM33 7h3v1h-3zM39 7h2v1h-2zM42 7h1v1h-1zM44 7h3v1h-3zM48 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM12 8h1v1h-1zM15 8h2v1h-2zM18 8h3v1h-3zM22 8h7v1h-7zM32 8h9v1h-9zM42 8h1v1h-1zM44 8h3v1h-3zM48 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM12 9h1v1h-1zM14 9h1v1h-1zM16 9h1v1h-1zM19 9h1v1h-1zM21 9h2v1h-2zM24 9h1v1h-1zM28 9h1v1h-1zM30 9h1v1h-1zM33 9h1v1h-1zM35 9h1v1h-1zM37 9h1v1h-1zM42 9h1v1h-1zM48 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM28 10h1v1h-1zM30 10h1v1h-1zM32 10h1v1h-1zM34 10h1v1h-1zM36 10h1v1h-1zM38 10h1v1h-1zM40 10h1v1h-1zM42 10h7v1h-7zM12 11h3v1h-3zM16 11h1v1h-1zM18 11h1v1h-1zM21 11h1v1h-1zM23 11h2v1h-2zM28 11h1v1h-1zM31 11h2v1h-2zM34 11h1v1h-1zM40 11h1v1h-1zM4 12h1v1h-1zM6 12h5v1h-5zM14 12h2v1h-2zM19 12h2v1h-2zM22 12h9v1h-9zM33 12h1v1h-1zM35 12h1v1h-1zM38 12h1v1h-1zM42 12h5v1h-5zM7 13h1v1h-1zM11 13h1v1h-1zM17 13h2v1h-2zM22 13h4v1h-4zM27 13h1v1h-1zM29 13h1v1h-1zM31 13h2v1h-2zM34 13h1v1h-1zM36 13h1v1h-1zM39 13h2v1h-2zM44 13h1v1h-1zM46 13h3v1h-3zM4 14h2v1h-2zM9 14h2v1h-2zM12 14h1v1h-1zM17 14h4v1h-4zM22 14h5v1h-5zM28 14h1v1h-1zM30 14h1v1h-1zM32 14h1v1h-1zM38 14h1v1h-1zM41 14h3v1h-3zM47 14h1v1h-1zM5 15h1v1h-1zM7 15h1v1h-1zM9 15h1v1h-1zM11 15h1v1h-1zM16 15h3v1h-3zM20 15h2v1h-2zM27 15h1v1h-1zM32 15h3v1h-3zM36 15h1v1h-1zM38 15h9v1h-9zM4 16h2v1h-2zM9 16h2v1h-2zM15 16h1v1h-1zM18 16h1v1h-1zM21 16h2v1h-2zM25 16h1v1h-1zM28 16h1v1h-1zM30 16h1v1h-1zM33 16h3v1h-3zM39 16h1v1h-1zM41 16h2v1h-2zM48 16h1v1h-1zM4 17h1v1h-1zM6 17h2v1h-2zM9 17h1v1h-1zM11 17h1v1h-1zM14 17h4v1h-4zM19 17h2v1h-2zM25 17h3v1h-3zM29 17h1v1h-1zM33 17h3v1h-3zM37 17h1v1h-1zM40 17h2v1h-2zM43 17h2v1h-2zM46 17h1v1h-1zM48 17h1v1h-1zM6 18h1v1h-1zM8 18h3v1h-3zM12 18h2v1h-2zM17 18h1v1h-1zM20 18h1v1h-1zM22 18h4v1h-4zM28 18h2v1h-2zM31 18h1v1h-1zM35 18h1v1h-1zM38 18h3v1h-3zM42 18h2v1h-2zM45 18h3v1h-3zM4 19h4v1h-4zM9 19h1v1h-1zM12 19h4v1h-4zM25 19h1v1h-1zM27 19h2v1h-2zM31 19h3v1h-3zM36 19h2v1h-2zM41 19h1v1h-1zM43 19h5v1h-5zM4 20h1v1h-1zM6 20h9v1h-9zM16 20h1v1h-1zM19 20h2v1h-2zM22 20h1v1h-1zM24 20h1v1h-1zM26 20h5v1h-5zM33 20h1v1h-1zM35 20h1v1h-1zM39 20h1v1h-1zM41 20h1v1h-1zM43 20h1v1h-1zM47 20h2v1h-2zM8 21h1v1h-1zM11 21h1v1h-1zM13 21h1v1h-1zM15 21h1v1h-1zM18 21h1v1h-1zM20 21h2v1h-2zM25 21h1v1h-1zM28 21h2v1h-2zM31 21h6v1h-6zM39 21h2v1h-2zM45 21h2v1h-2zM48 21h1v1h-1zM7 22h1v1h-1zM9 22h4v1h-4zM14 22h1v1h-1zM18 22h2v1h-2zM22 22h1v1h-1zM24 22h1v1h-1zM27 22h2v1h-2zM30 22h1v1h-1zM35 22h1v1h-1zM38 22h2v1h-2zM41 22h2v1h-2zM45 22h3v1h-3zM7 23h2v1h-2zM11 23h3v1h-3zM16 23h1v1h-1zM20 23h3v1h-3zM29 23h1v1h-1zM31 23h1v1h-1zM34 23h1v1h-1zM37 23h1v1h-1zM39 23h1v1h-1zM44 23h3v1h-3zM48 23h1v1h-1zM4 24h1v1h-1zM8 24h8v1h-8zM17 24h1v1h-1zM20 24h10v1h-10zM35 24h1v1h-1zM38 24h7v1h-7zM5 25h1v1h-1zM7 25h2v1h-2zM12 25h2v1h-2zM15 25h5v1h-5zM24 25h1v1h-1zM28 25h1v1h-1zM31 25h1v1h-1zM33 25h2v1h-2zM37 25h1v1h-1zM39 25h2v1h-2zM44 25h5v1h-5zM6 26h3v1h-3zM10 26h1v1h-1zM12 26h4v1h-4zM21 26h1v1h-1zM24 26h1v1h-1zM26 26h1v1h-1zM28 26h6v1h-6zM37 26h2v1h-2zM40 26h1v1h-1zM42 26h1v1h-1zM44 26h1v1h-1zM46 26h2v1h-2zM5 27h1v1h-1zM7 27h2v1h-2zM12 27h1v1h-1zM15 27h2v1h-2zM18 27h1v1h-1zM23 27h2v1h-2zM28 27h9v1h-9zM40 27h1v1h-1zM44 27h4v1h-4zM5 28h8v1h-8zM14 28h2v1h-2zM20 28h2v1h-2zM24 28h8v1h-8zM33 28h2v1h-2zM38 28h8v1h-8zM6 29h2v1h-2zM9 29h1v1h-1zM11 29h1v1h-1zM14 29h1v1h-1zM17 29h1v1h-1zM19 29h2v1h-2zM22 29h2v1h-2zM26 29h1v1h-1zM28 29h2v1h-2zM34 29h2v1h-2zM41 29h1v1h-1zM43 29h1v1h-1zM46 29h1v1h-1zM48 29h1v1h-1zM5 30h2v1h-2zM10 30h1v1h-1zM13 30h1v1h-1zM16 30h1v1h-1zM18 30h1v1h-1zM21 30h1v1h-1zM24 30h3v1h-3zM30 30h1v1h-1zM33 30h1v1h-1zM35 30h1v1h-1zM38 30h1v1h-1zM40 30h2v1h-2zM44 30h2v1h-2zM47 30h1v1h-1zM5 31h3v1h-3zM11 31h1v1h-1zM13 31h1v1h-1zM16 31h3v1h-3zM20 31h1v1h-1zM23 31h1v1h-1zM25 31h1v1h-1zM27 31h2v1h-2zM31 31h2v1h-2zM35 31h3v1h-3zM39 31h1v1h-1zM42 31h1v1h-1zM44 31h4v1h-4zM6 32h1v1h-1zM8 32h1v1h-1zM10 32h1v1h-1zM14 32h1v1h-1zM16 32h2v1h-2zM20 32h2v1h-2zM24 32h1v1h-1zM27 32h1v1h-1zM30 32h1v1h-1zM35 32h1v1h-1zM40 32h1v1h-1zM42 32h1v1h-1zM44 32h1v1h-1zM48 32h1v1h-1zM4 33h1v1h-1zM6 33h1v1h-1zM8 33h2v1h-2zM11 33h3v1h-3zM15 33h7v1h-7zM23 33h1v1h-1zM25 33h1v1h-1zM27 33h1v1h-1zM31 33h5v1h-5zM37 33h1v1h-1zM40 33h1v1h-1zM42 33h1v1h-1zM45 33h2v1h-2zM48 33h1v1h-1zM5 34h3v1h-3zM10 34h1v1h-1zM13 34h1v1h-1zM19 34h1v1h-1zM21 34h2v1h-2zM25 34h1v1h-1zM27 34h1v1h-1zM30 34h2v1h-2zM37 34h2v1h-2zM40 34h1v1h-1zM43 34h1v1h-1zM46 34h2v1h-2zM4 35h1v1h-1zM8 35h2v1h-2zM11 35h1v1h-1zM13 35h6v1h-6zM22 35h1v1h-1zM26 35h1v1h-1zM28 35h3v1h-3zM33 35h2v1h-2zM36 35h2v1h-2zM39 35h1v1h-1zM42 35h2v1h-2zM45 35h2v1h-2zM5 36h4v1h-4zM10 36h2v1h-2zM14 36h1v1h-1zM17 36h2v1h-2zM24 36h2v1h-2zM28 36h1v1h-1zM30 36h1v1h-1zM33 36h1v1h-1zM35 36h1v1h-1zM37 36h2v1h-2zM40 36h1v1h-1zM43 36h2v1h-2zM48 36h1v1h-1zM5 37h1v1h-1zM8 37h2v1h-2zM11 37h1v1h-1zM14 37h1v1h-1zM16 37h1v1h-1zM18 37h2v1h-2zM21 37h1v1h-1zM23 37h1v1h-1zM25 37h2v1h-2zM28 37h2v1h-2zM31 37h1v1h-1zM33 37h2v1h-2zM36 37h1v1h-1zM40 37h2v1h-2zM45 37h3v1h-3zM8 38h1v1h-1zM10 38h3v1h-3zM14 38h1v1h-1zM16 38h2v1h-2zM19 38h2v1h-2zM24 38h2v1h-2zM30 38h2v1h-2zM35 38h4v1h-4zM40 38h2v1h-2zM46 38h2v1h-2zM5 39h4v1h-4zM12 39h3v1h-3zM17 39h4v1h-4zM24 39h2v1h-2zM28 39h1v1h-1zM35 39h2v1h-2zM39 39h5v1h-5zM45 39h2v1h-2zM4 40h1v1h-1zM7 40h2v1h-2zM10 40h3v1h-3zM16 40h3v1h-3zM22 40h1v1h-1zM24 40h5v1h-5zM30 40h1v1h-1zM33 40h2v1h-2zM40 40h5v1h-5zM12 41h1v1h-1zM17 41h4v1h-4zM22 41h3v1h-3zM28 41h1v1h-1zM34 41h1v1h-1zM36 41h2v1h-2zM39 41h2v1h-2zM44 41h3v1h-3zM48 41h1v1h-1zM4 42h7v1h-7zM14 42h1v1h-1zM17 42h2v1h-2zM23 42h2v1h-2zM26 42h1v1h-1zM28 42h3v1h-3zM32 42h2v1h-2zM38 42h3v1h-3zM42 42h1v1h-1zM44 42h1v1h-1zM46 42h2v1h-2zM4 43h1v1h-1zM10 43h1v1h-1zM12 43h1v1h-1zM14 43h3v1h-3zM18 43h1v1h-1zM20 43h2v1h-2zM24 43h1v1h-1zM28 43h5v1h-5zM34 43h1v1h-1zM36 43h1v1h-1zM39 43h2v1h-2zM44 43h4v1h-4zM4 44h1v1h-1zM6 44h3v1h-3zM10 44h1v1h-1zM12 44h4v1h-4zM17 44h2v1h-2zM24 44h6v1h-6zM38 44h8v1h-8zM47 44h1v1h-1zM4 45h1v1h-1zM6 45h3v1h-3zM10 45h1v1h-1zM12 45h3v1h-3zM16 45h3v1h-3zM21 45h1v1h-1zM23 45h3v1h-3zM27 45h2v1h-2zM31 45h1v1h-1zM34 45h2v1h-2zM37 45h1v1h-1zM43 45h2v1h-2zM47 45h2v1h-2zM4 46h1v1h-1zM6 46h3v1h-3zM10 46h1v1h-1zM12 46h6v1h-6zM19 46h2v1h-2zM26 46h1v1h-1zM28 46h1v1h-1zM30 46h1v1h-1zM32 46h2v1h-2zM35 46h4v1h-4zM40 46h1v1h-1zM42 46h1v1h-1zM46 46h2v1h-2zM4 47h1v1h-1zM10 47h1v1h-1zM15 47h1v1h-1zM18 47h3v1h-3zM22 47h4v1h-4zM27 47h1v1h-1zM29 47h1v1h-1zM32 47h1v1h-1zM34 47h3v1h-3zM40 47h1v1h-1zM43 47h1v1h-1zM46 47h1v1h-1zM4 48h7v1h-7zM12 48h3v1h-3zM16 48h8v1h-8zM25 48h1v1h-1zM28 48h2v1h-2zM33 48h3v1h-3zM37 48h8v1h-8zM47 48h1v1h-1z" fill="#000"/></svg></div><div><h2>Find us</h2><p class="sub" style="margin-bottom:6px">📍 XGRR+XC9 Radhe farm, Vasna, Ahmedabad, Gujarat 380007</p><p class="sub" style="margin-bottom:14px">Scan the QR code to open our location in Google Maps.</p><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=XGRR%2BXC9%20Radhe%20farm%2C%20Vasna%2C%20Ahmedabad%2C%20Gujarat%20380007" target="_blank" rel="noopener">Open in Google Maps ↗</a></div></div></div></section>
+<section id="insta" style="padding-top:0"><div class="wrap"><div class="card igc"><div class="qr"><svg viewBox="0 0 41 41" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QR code for the Radhe Box Cricket Instagram page" shape-rendering="crispEdges"><rect width="100%" height="100%" fill="#fff"/><path d="M4 4h7v1h-7zM13 4h3v1h-3zM17 4h1v1h-1zM20 4h4v1h-4zM27 4h1v1h-1zM30 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM13 5h3v1h-3zM17 5h3v1h-3zM21 5h1v1h-1zM24 5h1v1h-1zM26 5h1v1h-1zM30 5h1v1h-1zM36 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM12 6h3v1h-3zM17 6h1v1h-1zM19 6h4v1h-4zM24 6h1v1h-1zM28 6h1v1h-1zM30 6h1v1h-1zM32 6h3v1h-3zM36 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM12 7h2v1h-2zM15 7h1v1h-1zM18 7h3v1h-3zM23 7h6v1h-6zM30 7h1v1h-1zM32 7h3v1h-3zM36 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h4v1h-4zM19 8h1v1h-1zM21 8h2v1h-2zM28 8h1v1h-1zM30 8h1v1h-1zM32 8h3v1h-3zM36 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM12 9h5v1h-5zM19 9h3v1h-3zM24 9h1v1h-1zM26 9h1v1h-1zM30 9h1v1h-1zM36 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM28 10h1v1h-1zM30 10h7v1h-7zM12 11h1v1h-1zM14 11h1v1h-1zM16 11h1v1h-1zM19 11h1v1h-1zM22 11h1v1h-1zM25 11h1v1h-1zM27 11h1v1h-1zM4 12h1v1h-1zM6 12h5v1h-5zM13 12h1v1h-1zM16 12h4v1h-4zM21 12h1v1h-1zM26 12h3v1h-3zM30 12h5v1h-5zM4 13h2v1h-2zM13 13h4v1h-4zM20 13h1v1h-1zM22 13h6v1h-6zM30 13h2v1h-2zM33 13h2v1h-2zM36 13h1v1h-1zM4 14h2v1h-2zM7 14h2v1h-2zM10 14h3v1h-3zM15 14h1v1h-1zM19 14h2v1h-2zM22 14h1v1h-1zM24 14h2v1h-2zM28 14h1v1h-1zM30 14h1v1h-1zM32 14h1v1h-1zM34 14h2v1h-2zM4 15h3v1h-3zM8 15h2v1h-2zM11 15h2v1h-2zM14 15h3v1h-3zM18 15h2v1h-2zM25 15h3v1h-3zM29 15h1v1h-1zM32 15h3v1h-3zM36 15h1v1h-1zM6 16h3v1h-3zM10 16h1v1h-1zM13 16h1v1h-1zM19 16h1v1h-1zM22 16h1v1h-1zM25 16h1v1h-1zM27 16h3v1h-3zM31 16h3v1h-3zM7 17h1v1h-1zM9 17h1v1h-1zM12 17h3v1h-3zM16 17h5v1h-5zM24 17h5v1h-5zM30 17h1v1h-1zM33 17h1v1h-1zM35 17h2v1h-2zM5 18h1v1h-1zM8 18h10v1h-10zM21 18h3v1h-3zM28 18h6v1h-6zM35 18h1v1h-1zM6 19h1v1h-1zM18 19h1v1h-1zM20 19h1v1h-1zM23 19h4v1h-4zM29 19h3v1h-3zM33 19h2v1h-2zM4 20h2v1h-2zM7 20h1v1h-1zM10 20h4v1h-4zM18 20h1v1h-1zM21 20h1v1h-1zM23 20h1v1h-1zM26 20h1v1h-1zM28 20h2v1h-2zM31 20h3v1h-3zM36 20h1v1h-1zM7 21h3v1h-3zM12 21h1v1h-1zM14 21h3v1h-3zM18 21h1v1h-1zM20 21h5v1h-5zM26 21h6v1h-6zM33 21h2v1h-2zM36 21h1v1h-1zM4 22h1v1h-1zM6 22h1v1h-1zM10 22h4v1h-4zM17 22h3v1h-3zM21 22h1v1h-1zM26 22h1v1h-1zM31 22h2v1h-2zM34 22h2v1h-2zM4 23h4v1h-4zM12 23h1v1h-1zM18 23h1v1h-1zM21 23h3v1h-3zM27 23h1v1h-1zM29 23h8v1h-8zM4 24h2v1h-2zM7 24h1v1h-1zM10 24h2v1h-2zM13 24h1v1h-1zM16 24h2v1h-2zM19 24h2v1h-2zM24 24h3v1h-3zM29 24h1v1h-1zM32 24h2v1h-2zM35 24h2v1h-2zM4 25h4v1h-4zM9 25h1v1h-1zM11 25h1v1h-1zM13 25h1v1h-1zM16 25h1v1h-1zM19 25h1v1h-1zM21 25h2v1h-2zM25 25h1v1h-1zM27 25h1v1h-1zM30 25h1v1h-1zM36 25h1v1h-1zM4 26h1v1h-1zM9 26h2v1h-2zM12 26h3v1h-3zM17 26h5v1h-5zM24 26h3v1h-3zM29 26h1v1h-1zM32 26h1v1h-1zM34 26h2v1h-2zM4 27h1v1h-1zM6 27h1v1h-1zM8 27h2v1h-2zM11 27h3v1h-3zM19 27h1v1h-1zM25 27h1v1h-1zM29 27h3v1h-3zM33 27h2v1h-2zM4 28h1v1h-1zM6 28h1v1h-1zM9 28h3v1h-3zM14 28h1v1h-1zM17 28h5v1h-5zM24 28h1v1h-1zM26 28h1v1h-1zM28 28h9v1h-9zM12 29h1v1h-1zM14 29h1v1h-1zM17 29h2v1h-2zM20 29h1v1h-1zM22 29h4v1h-4zM27 29h2v1h-2zM32 29h1v1h-1zM34 29h2v1h-2zM4 30h7v1h-7zM13 30h1v1h-1zM17 30h4v1h-4zM22 30h1v1h-1zM24 30h2v1h-2zM27 30h2v1h-2zM30 30h1v1h-1zM32 30h1v1h-1zM34 30h2v1h-2zM4 31h1v1h-1zM10 31h1v1h-1zM12 31h2v1h-2zM16 31h3v1h-3zM20 31h1v1h-1zM23 31h6v1h-6zM32 31h4v1h-4zM4 32h1v1h-1zM6 32h3v1h-3zM10 32h1v1h-1zM12 32h3v1h-3zM18 32h1v1h-1zM22 32h1v1h-1zM25 32h1v1h-1zM28 32h6v1h-6zM35 32h1v1h-1zM4 33h1v1h-1zM6 33h3v1h-3zM10 33h1v1h-1zM12 33h1v1h-1zM15 33h1v1h-1zM17 33h1v1h-1zM19 33h3v1h-3zM24 33h4v1h-4zM29 33h1v1h-1zM32 33h2v1h-2zM36 33h1v1h-1zM4 34h1v1h-1zM6 34h3v1h-3zM10 34h1v1h-1zM12 34h3v1h-3zM17 34h1v1h-1zM23 34h1v1h-1zM25 34h1v1h-1zM27 34h5v1h-5zM33 34h1v1h-1zM4 35h1v1h-1zM10 35h1v1h-1zM13 35h3v1h-3zM17 35h1v1h-1zM20 35h1v1h-1zM23 35h4v1h-4zM30 35h1v1h-1zM32 35h3v1h-3zM4 36h7v1h-7zM12 36h1v1h-1zM16 36h1v1h-1zM21 36h3v1h-3zM26 36h6v1h-6zM35 36h1v1h-1z" fill="#000"/></svg></div><div><h2>Follow us on Instagram</h2><p class="sub" style="margin-bottom:14px">Scan the QR code or tap the button to follow @radhe_box_cricket.</p><a class="btn" href="https://www.instagram.com/radhe_box_cricket/" target="_blank" rel="noopener">@radhe_box_cricket ↗</a></div></div></div></section>
+<footer id="contact"><div class="wrap">🏏 <b>Radhe Box Cricket</b> · Owner: Ankit<br>📍 <a href="https://www.google.com/maps/search/?api=1&amp;query=XGRR%2BXC9%20Radhe%20farm%2C%20Vasna%2C%20Ahmedabad%2C%20Gujarat%20380007" target="_blank" rel="noopener">XGRR+XC9 Radhe farm, Vasna, Ahmedabad, Gujarat 380007</a> · 📞 <a href="tel:+918160885601">+91 81608 85601</a><br>📸 <a href="https://www.instagram.com/radhe_box_cricket/" target="_blank" rel="noopener">@radhe_box_cricket</a><br>© Radhe Box Cricket · <a href="#admin">Admin</a></div></footer>
+</div>
+<div id="admin" hidden></div>
+<div id="dlg" hidden></div><div id="toast" hidden></div>
+<script>
+(function(){
+var K='rbc_v1',D={rates:{lo:700,hi:1200,ps:17,pe:24,t:15000},wa:'918160885601',pw:'ankit123',bookings:[]},S=D,authed=false,ad='';
+try{var raw=JSON.parse(localStorage.getItem(K));if(raw)S=raw}catch(e){}
+S.rates=S.rates||D.rates;S.rates.t=S.rates.t||15000;S.rates.th=S.rates.th||8000;if(S.rates.lo===undefined){S.rates.lo=700;S.rates.hi=1200;S.rates.ps=17;S.rates.pe=24}S.wa=S.wa||D.wa;if(S.wa==='910000000000'||S.wa==='917046706848')S.wa=D.wa;S.pw=S.pw||D.pw;S.bookings=S.bookings||[];S.blocks=S.blocks||[];S.tours=S.tours||[];
+function save(){try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+function $(i){return document.getElementById(i)}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function money(n){return '₹'+Number(n).toLocaleString('en-IN')}
+function rate(h){return h>=S.rates.ps&&h<S.rates.pe?S.rates.hi:S.rates.lo}
+function offTxt(){var p=[];if(S.rates.ps>6)p.push(label(6)+' – '+label(S.rates.ps));if(S.rates.pe<24)p.push(label(S.rates.pe)+' – '+label(24));return p.join(' & ')||'—'}
+function peakOpts(v,a,b){var o='';for(var h=a;h<=b;h++)o+='<option value="'+h+'"'+(h===v?' selected':'')+'>'+label(h)+'</option>';return o}
+function label(h){return (h%12||12)+(h<12||h==24?' AM':' PM')}
+function owner(date,h){return S.bookings.filter(function(b){return b.date===date&&b.status!=='cancelled'&&h>=b.hour&&h<b.hour+b.hrs})[0]}
+function blocked(date,h){return S.blocks.some(function(k){return k.date===date&&k.hour===h})}
+function tourDay(date,h){return S.tours.some(function(t){var b=t.block===true?'full':t.block;if(t.date!==date||!b)return false;return b==='full'||(b==='am'&&h<15)||(b==='pm'&&h>=15)})}
+function dayTxt(t){var b=t.block===true?'full':t.block;return b==='full'?' · Full day':b==='am'?' · Half day, 6 AM – 3 PM':b==='pm'?' · Half day, 3 PM – 12 AM':''}
+function taken(date,h){return !!owner(date,h)||blocked(date,h)||tourDay(date,h)}
+function sum(h,n){var t=0;for(var i=0;i<n;i++)t+=rate(Math.min(h+i,23));return t}
+var sel=null,d=$('date');
+d.min=d.value=new Date().toISOString().slice(0,10);
+function prices(){$('pr').innerHTML=[['Off-peak (low)',offTxt(),S.rates.lo],['Peak (high)',label(S.rates.ps)+' – '+label(S.rates.pe),S.rates.hi],['Tournament full day','6 AM – 12 AM',S.rates.t,'/day'],['Tournament half day','6 AM – 3 PM or 3 PM – 12 AM',S.rates.th,'/day']].map(function(r){return '<div class="card"><h3>'+r[0]+'</h3><p>'+r[1]+'</p><div class="price">'+money(r[2])+'<small>'+(r[3]||'/hr')+'</small></div></div>'}).join('')}
+function draw(){
+ var box=$('slots'),n=+$('hrs').value;box.innerHTML='';
+ for(var h=6;h+n<=24;h++){
+  var b=document.createElement('button');b.type='button';
+  b.className='slot'+(sel===h?' sel':'');var txt=label(h)+' – '+label(h+n);b.textContent=txt;
+  if(!free(d.value,h,n)){b.disabled=true;b.innerHTML='<span class="t">'+txt+'</span><small>Booked</small>'}
+  (function(h){b.onclick=function(){sel=h;draw();price()}})(h);
+  box.appendChild(b);
+ }
+}
+function price(){var n=+$('hrs').value;if(sel===null){$('total').textContent='Select a slot to see the price';return}$('total').innerHTML='Selected: <b>'+label(sel)+' – '+label(sel+n)+'</b> ('+n+' hours)<br>Total: '+money(sum(sel,n))}
+function free(date,h,n){for(var i=0;i<n;i++)if(h+i>23||taken(date,h+i))return false;return true}
+d.onchange=function(){sel=null;draw();price()};
+$('hrs').onchange=function(){if(sel!==null&&!free(d.value,sel,+$('hrs').value))sel=null;draw();price()};
+$('go').onclick=function(){
+ var nm=$('name').value.trim(),ph=$('phone').value.trim(),n=+$('hrs').value,pl=Math.round(+$('players').value);
+ if(sel===null||!nm||!ph||!(pl>=1)){alert('Please choose a slot and enter your name, phone and number of players.');return}
+ if(!free(d.value,sel,n)){alert('Some of those hours are already booked. Please pick another slot or a shorter duration.');return}
+ var tot=sum(sel,n);
+ S.bookings.push({id:Date.now(),date:d.value,hour:sel,hrs:n,name:nm,phone:ph,players:pl,total:tot,status:'pending',paid:false,src:'web'});save();
+ var msg='Hi! I’d like to book a slot at Radhe Box Cricket.\nName: '+nm+'\nPhone: '+ph+'\nPlayers: '+pl+'\nDate: '+d.value+'\nTime: '+label(sel)+' ('+n+' hr)\nTotal: '+money(tot);
+ sel=null;draw();price();
+ sendWA(msg);
+};
+function tours(){
+ var today=new Date().toISOString().slice(0,10);
+ var L=S.tours.filter(function(t){return t.date>=today}).sort(function(a,b){return a.date<b.date?-1:1});
+ var bn=$('tbn');
+ if(L.length){var f0=L[0],lf=f0.max-f0.teams.length;bn.innerHTML='<a class="tbn" href="#tour"><span class="dot"></span><b>🏆 Tournament mode ON</b><span>'+esc(f0.name)+' · '+(f0.date===today?'Today':esc(f0.date))+'</span><span>Prize pool: <b>'+esc(f0.prize)+'</b></span><span>'+(lf>0?lf+' spots left · Register now →':'Registration full')+'</span>'+(L.length>1?'<span>+'+(L.length-1)+' more</span>':'')+'</a>'}else bn.innerHTML='';
+ $('tl').innerHTML=L.map(function(t){
+  var left=t.max-t.teams.length;
+  var fx=t.fix&&t.fix.length?'<p style="margin-top:10px"><b>Fixtures</b></p><ol class="fx">'+t.fix.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ol>':'';
+  var f=left>0?'<button class="btn sm alt" style="margin-top:12px" data-act="reg" data-id="'+t.id+'">Register team</button><div class="rf" hidden><label>Team name</label><input class="f1"><label>Captain name</label><input class="f2"><label>Captain phone</label><input class="f3" type="tel"><p></p><button class="btn sm" data-act="sub" data-id="'+t.id+'">Register on WhatsApp</button></div>':'';
+  return '<div class="card"><h3>🏆 '+esc(t.name)+'</h3><p>📅 '+esc(t.date)+dayTxt(t)+' · Entry '+money(t.fee)+' · Prize: '+esc(t.prize)+'</p><p>'+(left>0?left+' of '+t.max+' spots left':'Registration full')+'</p>'+fx+f+'</div>'
+ }).join('')||'<p class="sub">No tournaments announced yet. Check back soon!</p>';
+}
+$('tl').addEventListener('click',function(e){
+ var t=e.target.closest('[data-act]');if(!t)return;var card=t.closest('.card'),id=+t.dataset.id;
+ if(t.dataset.act==='reg'){var rf=card.querySelector('.rf');rf.hidden=!rf.hidden}
+ else if(t.dataset.act==='sub'){
+  var T=S.tours.filter(function(x){return x.id===id})[0],tn=card.querySelector('.f1').value.trim(),cp=card.querySelector('.f2').value.trim(),ph=card.querySelector('.f3').value.trim();
+  if(!T)return;
+  if(!tn||!cp||!ph){alert('Please fill team name, captain name and phone.');return}
+  if(T.teams.length>=T.max){alert('Registration is full.');return}
+  T.teams.push({id:Date.now(),team:tn,captain:cp,phone:ph,paid:false});save();tours();
+  sendWA('Hi! I’d like to register my team for '+T.name+' ('+T.date+') at Radhe Box Cricket.\nTeam: '+tn+'\nCaptain: '+cp+'\nPhone: '+ph+'\nEntry fee: '+money(T.fee))}
+});
+function tourAdmin(){
+ var h='<div class="card"><h3>🏆 Tournament mode</h3><p class="sub" style="margin-bottom:10px">Create a tournament, collect team registrations and make fixtures. Choose full day or half day for how long the ground is closed to normal bookings.</p><div class="row"><div><label>Name</label><input id="tn" placeholder="Radhe Premier League"></div><div><label>Date</label><input type="date" id="td" value="'+d.value+'"></div></div><div class="row3"><div><label>Entry fee (₹)</label><input type="number" id="tf" value="2000"></div><div><label>Prize</label><input id="tp" placeholder="₹20,000 + trophy"></div><div><label>Max teams</label><input type="number" id="tm" value="8"></div></div><label style="margin-top:12px">Ground closed for normal bookings</label><select id="tb"><option value="full">Full day</option><option value="am">Half day, morning (6 AM – 3 PM)</option><option value="pm">Half day, evening (3 PM – 12 AM)</option><option value="">Don’t close the ground</option></select><p class="err" id="terr"></p><button class="btn sm alt" data-act="tadd">Create tournament</button></div>';
+ S.tours.forEach(function(t){
+  var rows=t.teams.map(function(m){return '<tr><td>'+esc(m.team)+'</td><td>'+esc(m.captain)+'</td><td>'+esc(m.phone)+'</td><td><select data-act="tpay" data-id="'+t.id+'" data-tid="'+m.id+'"><option value="paid"'+(m.paid?' selected':'')+'>Paid</option><option value="due"'+(m.paid?'':' selected')+'>Due</option></select></td><td><button class="del" data-act="trem" data-id="'+t.id+'" data-tid="'+m.id+'">Remove</button></td></tr>'}).join('')||'<tr><td colspan="5">No teams yet.</td></tr>';
+  var fx=t.fix&&t.fix.length?'<p style="margin-top:10px"><b>Fixtures</b></p><ol class="fx">'+t.fix.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ol>':'';
+  h+='<div class="card"><div class="top"><div><h3>'+esc(t.name)+'</h3><span class="sub">'+esc(t.date)+dayTxt(t)+' · '+t.teams.length+'/'+t.max+' teams · Entry '+money(t.fee)+'</span></div><div><button class="btn sm alt" data-act="fix" data-id="'+t.id+'">Make fixtures</button> <button class="del" data-act="tdel" data-id="'+t.id+'">Delete</button></div></div><div class="tw"><table><tr><th>Team</th><th>Captain</th><th>Phone</th><th>Fee</th><th></th></tr>'+rows+'</table></div>'+fx+'</div>'});
+ return h}
+var td0=$('tdate');td0.min=td0.value=d.value;
+function tk(){var k=$('tkind').value;return k==='am'?{h:6,n:9,p:S.rates.th,t:'6 AM – 3 PM'}:k==='pm'?{h:15,n:9,p:S.rates.th,t:'3 PM – 12 AM'}:{h:6,n:18,p:S.rates.t,t:'6 AM – 12 AM'}}
+function tprice(){var n=+$('tdays').value,k=tk();$('ttotal').textContent='Total: '+money(k.p*n)+' ('+n+(n>1?' days':' day')+', '+k.t+')'}
+function tfree(date,a,b){for(var h=a;h<a+b;h++)if(taken(date,h))return false;return true}
+function addDays(s,k){var x=new Date(s+'T12:00:00Z');x.setUTCDate(x.getUTCDate()+k);return x.toISOString().slice(0,10)}
+function mode(t){$('bk1').hidden=t;$('bk2').hidden=!t;$('m1').className='btn sm'+(t?'':' alt');$('m2').className='btn sm'+(t?' alt':'');if(t)tprice()}
+$('m1').onclick=function(){mode(false)};$('m2').onclick=function(){mode(true)};
+$('tdays').onchange=tprice;$('tkind').onchange=tprice;
+$('tgo').onclick=function(){
+ var date=td0.value,n=+$('tdays').value,nm=$('tname').value.trim(),og=$('torg').value.trim(),ph=$('tph').value.trim(),tm=$('tteams').value,days=[],K=tk();
+ if(!date||!nm||!og||!ph){alert('Please fill the date, tournament name, your name and phone.');return}
+ for(var i=0;i<n;i++)days.push(addDays(date,i));
+ for(var j=0;j<days.length;j++)if(!tfree(days[j],K.h,K.n)){alert('The ground is not fully free on '+days[j]+'. Please choose other dates, or book single slots.');return}
+ var base=Date.now();
+ days.forEach(function(x,k){S.bookings.push({id:base+k,date:x,hour:K.h,hrs:K.n,name:og+' · 🏆 '+nm,phone:ph,total:K.p,status:'pending',paid:false,src:'tour'})});save();draw();
+ var msg='Hi! I’d like to book the ground for a tournament at Radhe Box Cricket.\nTournament: '+nm+'\nTeams: '+tm+'\nDates: '+days.join(', ')+'\nTime: '+K.t+' each day\nOrganizer: '+og+'\nPhone: '+ph+'\nTotal: '+money(K.p*n);
+ sendWA(msg);
+};
+var toastT;
+function toast(m){var t=$('toast');t.textContent=m;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(function(){t.hidden=true},3000)}
+function alert(m){toast(m)}
+function ask(msg,yes){var o=$('dlg');o.innerHTML='<div class="dbox"><p>'+esc(msg)+'</p><button class="btn sm" style="background:var(--red);color:#fff" data-d="y">Yes</button> <button class="btn sm alt" data-d="n">Cancel</button></div>';o.hidden=false;o.onclick=function(e){var k=e.target.getAttribute('data-d');if(!k)return;o.hidden=true;if(k==='y')yes()}}
+function sendWA(msg){
+ var o=$('dlg'),u='https://wa.me/'+S.wa+'?text='+encodeURIComponent(msg);
+ o.innerHTML='<div class="dbox"><p><b>Almost done!</b><br>Tap Open WhatsApp to send this request to us.</p><textarea id="wam" readonly rows="7" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:14px"></textarea><p></p><a class="btn sm alt" href="'+u+'" target="_blank" rel="noopener">Open WhatsApp</a> <button class="btn sm" data-d="c">Copy</button> <button class="btn sm" style="background:var(--line);color:var(--ink)" data-d="n">Close</button><p style="margin-top:12px;font-size:13px">Or send it yourself to +'+esc(S.wa)+'</p></div>';
+ $('wam').value=msg;o.hidden=false;
+ o.onclick=function(e){var k=e.target.getAttribute('data-d');if(k==='n'){o.hidden=true}else if(k==='c'){var ta=$('wam');ta.select();var ok=false;try{ok=document.execCommand('copy')}catch(x){}toast(ok?'Message copied':'Press and hold the text to copy')}}
+}
+function digits(x){return String(x).replace(/\D/g,'').slice(-10)}
+function startMs(b){var p=b.date.split('-');return new Date(+p[0],+p[1]-1,+p[2],b.hour).getTime()}
+function findMine(){
+ var ph=digits($('cph').value),box=$('cl');
+ if(ph.length<10){toast('Enter the 10-digit phone number you booked with.');return}
+ var now=Date.now(),L=S.bookings.filter(function(b){return b.status!=='cancelled'&&digits(b.phone)===ph&&startMs(b)+b.hrs*3600000>now}).sort(function(a,b){return startMs(a)-startMs(b)});
+ var h=L.map(function(b){return '<div class="mb"><div><b>'+esc(b.date)+'</b> · '+label(b.hour)+' – '+label(b.hour+b.hrs)+'<br><small>'+esc(b.name)+' · '+money(b.total)+'</small></div><button class="btn sm" style="background:var(--red);color:#fff" data-act="cx" data-id="'+b.id+'">Cancel</button></div>'}).join('');
+ box.innerHTML=(h||'<p class="sub" style="margin:14px 0 0">No upcoming booking found on this device for that number.</p>')+'<p class="sub" style="margin:14px 0 8px">Booked on another phone? Send us a cancel request.</p><button class="btn sm alt" data-act="cwa" type="button">Send cancel request on WhatsApp</button>';
+}
+$('cfind').onclick=findMine;
+$('cl').addEventListener('click',function(e){
+ var t=e.target.closest('[data-act]');if(!t)return;
+ if(t.dataset.act==='cwa'){var cp=$('cph').value.trim();sendWA('Hi! I’d like to cancel my booking at Radhe Box Cricket.\nPhone: '+(cp||'—')+'\nPlease confirm the cancellation.');return}
+ var id=+t.dataset.id,b=S.bookings.filter(function(x){return x.id===id})[0];if(!b)return;
+ var soon=startMs(b)-Date.now()<3*3600000;
+ ask((soon?'This is less than 3 hours before your slot. ':'')+'Cancel your booking on '+b.date+' ('+label(b.hour)+' – '+label(b.hour+b.hrs)+')?',function(){
+  b.status='cancelled';save();draw();findMine();
+  sendWA('Hi! I’d like to cancel my booking at Radhe Box Cricket.\nName: '+b.name+'\nPhone: '+b.phone+'\nDate: '+b.date+'\nTime: '+label(b.hour)+' – '+label(b.hour+b.hrs)+'\nTotal: '+money(b.total))})
+});
+function adminHtml(){
+ var B=S.bookings.slice().sort(function(a,b){return (a.date+(''+100+a.hour).slice(1))<(b.date+(''+100+b.hour).slice(1))?-1:1});
+ var ok=B.filter(function(b){return b.status==='confirmed'}),pend=B.filter(function(b){return b.status==='pending'});
+ var rev=ok.reduce(function(s,b){return s+b.total},0);
+ var day=ad||d.value,sg='';for(var q=6;q<24;q++){var ow=owner(day,q),bl=blocked(day,q);sg+='<label class="chk'+(ow||bl?' on':'')+'"><input type="checkbox" data-act="blk" data-h="'+q+'"'+(ow||bl?' checked':'')+(ow?' disabled':'')+'> '+label(q)+' – '+label(q+1)+(ow?'<small> · '+esc(ow.name)+'</small>':'')+'</label>'}
+ var th=tourAdmin();
+ var due=B.filter(function(b){return !b.paid&&b.status!=='cancelled'}),dueAmt=due.reduce(function(s,b){return s+b.total},0);
+ var dueRows=due.map(function(b){var p=String(b.phone).replace(/\D/g,'');if(p.length===10)p='91'+p;var m='Hi '+b.name+', this is a reminder from Radhe Box Cricket: payment of '+money(b.total)+' is pending for your booking on '+b.date+' at '+label(b.hour)+'.';return '<tr><td>'+esc(b.date)+'</td><td>'+label(b.hour)+' – '+label(b.hour+b.hrs)+'</td><td>'+esc(b.name)+'<br><small>'+esc(b.phone)+(b.players?' · '+b.players+' players':'')+'</small></td><td>'+money(b.total)+'</td><td><button class="btn sm alt" data-act="paid" data-id="'+b.id+'">Mark paid</button> <a class="lnk" target="_blank" rel="noopener" href="https://wa.me/'+p+'?text='+encodeURIComponent(m)+'">Remind</a></td></tr>'}).join('')||'<tr><td colspan="5">No pending payments 🎉</td></tr>';
+ var rows=B.map(function(b){return '<tr><td>'+esc(b.date)+'</td><td>'+label(b.hour)+' – '+label(b.hour+b.hrs)+'</td><td>'+esc(b.name)+'<br><small>'+esc(b.phone)+(b.players?' · '+b.players+' players':'')+'</small></td><td>'+money(b.total)+'</td><td><select data-act="pay" data-id="'+b.id+'"><option value="paid"'+(b.paid?' selected':'')+'>Paid</option><option value="due"'+(b.paid?'':' selected')+'>Due</option></select></td><td><select data-act="status" data-id="'+b.id+'">'+['pending','confirmed','cancelled'].map(function(s){return '<option'+(s===b.status?' selected':'')+'>'+s+'</option>'}).join('')+'</select></td><td><button class="del" data-act="del" data-id="'+b.id+'">Delete</button></td></tr>'}).join('')||'<tr><td colspan="7">No bookings yet.</td></tr>';
+ var hrs='';for(var h=6;h<24;h++)hrs+='<option value="'+h+'">'+label(h)+'</option>';
+ return '<div class="wrap adm"><div class="top"><div><h2>Welcome, Ankit 👋</h2><span class="sub">Radhe Box Cricket · Admin panel</span></div><div><a class="lnk" href="#">← View site</a> <button class="btn sm" data-act="logout">Logout</button></div></div>'
+ +'<div class="kpis"><div class="kpi"><b>'+B.length+'</b><span>Total bookings</span></div><div class="kpi"><b>'+pend.length+'</b><span>Pending</span></div><div class="kpi"><b>'+ok.length+'</b><span>Confirmed</span></div><div class="kpi"><b>'+money(rev)+'</b><span>Confirmed revenue</span></div><div class="kpi"><b>'+money(dueAmt)+'</b><span>Payment due</span></div></div>'
+ +'<div class="card"><h3>Slot availability</h3><p class="sub" style="margin-bottom:10px">Tick a box to mark that hour as reserved. Untick to make it free again. Hours booked by customers are greyed out and managed in the Bookings table.</p><label>Date</label><input type="date" id="bd" data-act="bdate" value="'+day+'">'+(tourDay(day,6)||tourDay(day,23)?'<p class="note">🏆 Tournament day: part or all of the ground is closed for normal bookings.</p>':'')+'<div class="slotgrid">'+sg+'</div></div>'
+ +'<div class="card"><h3>Pending payments · '+money(dueAmt)+' due</h3><div class="tw"><table><tr><th>Date</th><th>Time</th><th>Customer</th><th>Amount</th><th></th></tr>'+dueRows+'</table></div></div>'
+ +th
+ +'<div class="card"><h3>Bookings</h3><div class="tw"><table><tr><th>Date</th><th>Time</th><th>Customer</th><th>Total</th><th>Payment</th><th>Status</th><th></th></tr>'+rows+'</table></div></div>'
+ +'<div class="card"><h3>Add walk-in booking</h3><div class="row3"><div><label>Date</label><input type="date" id="wd" value="'+d.value+'"></div><div><label>Start</label><select id="wh">'+hrs+'</select></div><div><label>Hours</label><select id="wn"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div><div class="row"><div><label>Name</label><input id="wname"></div><div><label>Phone</label><input id="wph" type="tel"></div></div><label>Payment</label><select id="wpay"><option value="paid">Paid</option><option value="due">Payment pending</option></select><p class="err" id="werr"></p><button class="btn sm alt" data-act="walk">Add booking</button></div>'
+ +'<div class="card"><h3>Hourly prices (₹)</h3><div class="row"><div><label>Low price (off-peak)</label><input type="number" id="rl" value="'+S.rates.lo+'"></div><div><label>High price (peak)</label><input type="number" id="rh" value="'+S.rates.hi+'"></div></div><div class="row"><div><label>Peak hours start</label><select id="rps">'+peakOpts(S.rates.ps,6,23)+'</select></div><div><label>Peak hours end</label><select id="rpe">'+peakOpts(S.rates.pe,7,24)+'</select></div></div><label>Tournament booking, full day (₹ per day)</label><input type="number" id="rt" value="'+S.rates.t+'"><label>Tournament booking, half day (₹ per day)</label><input type="number" id="rth" value="'+S.rates.th+'"><p></p><button class="btn sm alt" data-act="rates">Save prices</button></div>'
+ +'<div class="card"><h3>Settings</h3><div class="row"><div><label>WhatsApp number (with country code)</label><input id="swa" value="'+esc(S.wa)+'"></div><div><label>New admin password</label><input id="spw" type="password" placeholder="Leave blank to keep"></div></div><p></p><button class="btn sm alt" data-act="settings">Save settings</button> <button class="btn sm" style="background:var(--red);color:#fff" data-act="reset">Clear all bookings</button></div>'
+ +'<p class="note">Bookings and settings are saved in this browser only. The password is a simple lock, not real security. Default password: ankit123 — change it in Settings.</p></div>';
+}
+function render(){
+ var el=$('admin');
+ if(!authed){el.innerHTML='<div class="wrap"><div class="card login"><h2>Admin login</h2><p class="sub">Radhe Box Cricket · Ankit</p><label for="pw">Password</label><input id="pw" type="password"><p class="err" id="err"></p><button class="btn" data-act="login">Login</button><a class="lnk" href="#">← Back to site</a></div></div>';return}
+ el.innerHTML=adminHtml();
+}
+function route(){var a=location.hash==='#admin';$('site').hidden=a;$('admin').hidden=!a;if(a){render();window.scrollTo(0,0)}}
+$('admin').addEventListener('click',function(e){
+ var t=e.target.closest('[data-act]');if(!t)return;var a=t.dataset.act,id=+t.dataset.id;
+ if(a==='login'){if($('pw').value===S.pw){authed=true;render()}else $('err').textContent='Wrong password.'}
+ else if(a==='logout'){authed=false;render()}
+ else if(a==='del'){ask('Delete this booking?',function(){S.bookings=S.bookings.filter(function(b){return b.id!==id});save();render();draw()})}
+ else if(a==='tadd'){var tnm=$('tn').value.trim(),tdt=$('td').value;if(!tnm||!tdt){$('terr').textContent='Enter a tournament name and date.';return}S.tours.push({id:Date.now(),name:tnm,date:tdt,fee:+$('tf').value||0,prize:$('tp').value.trim()||'TBA',max:Math.max(2,+$('tm').value||8),block:$('tb').value,teams:[],fix:[]});save();render();draw();tours()}
+ else if(a==='tdel'){ask('Delete this tournament and its teams?',function(){S.tours=S.tours.filter(function(x){return x.id!==id});save();render();draw();tours()})}
+ else if(a==='trem'){var T1=S.tours.filter(function(x){return x.id===id})[0],tid=+t.dataset.tid;if(T1){T1.teams=T1.teams.filter(function(m){return m.id!==tid});T1.fix=[]}save();render();tours()}
+ else if(a==='fix'){var T2=S.tours.filter(function(x){return x.id===id})[0];if(!T2||T2.teams.length<2){alert('Add at least 2 teams first.');return}var nms=T2.teams.map(function(m){return m.team}).sort(function(){return Math.random()-.5});T2.fix=[];for(var i=0;i<nms.length;i+=2)T2.fix.push(nms[i]+(nms[i+1]?' vs '+nms[i+1]:' (bye)'));save();render();tours()}
+ else if(a==='reset'){ask('Delete ALL bookings and reserved slots? This cannot be undone.',function(){S.bookings=[];S.blocks=[];save();render();draw();toast('All bookings cleared.')})}
+ else if(a==='paid'){S.bookings.forEach(function(b){if(b.id===id)b.paid=true});save();render()}
+ else if(a==='walk'){
+  var dt=$('wd').value,h=+$('wh').value,n=+$('wn').value,nm=$('wname').value.trim(),ph=$('wph').value.trim();
+  if(!dt||!nm){$('werr').textContent='Enter a date and name.';return}
+  if(!free(dt,h,n)){$('werr').textContent='That time is already booked or runs past midnight.';return}
+  S.bookings.push({id:Date.now(),date:dt,hour:h,hrs:n,name:nm,phone:ph,total:sum(h,n),status:'confirmed',paid:$('wpay').value==='paid',src:'admin'});save();render();draw()}
+ else if(a==='rates'){var ps=+$('rps').value,pe=+$('rpe').value;if(pe<=ps){alert('Peak end must be after peak start.');return}S.rates={lo:+$('rl').value||0,hi:+$('rh').value||0,ps:ps,pe:pe,t:+$('rt').value||0,th:+$('rth').value||0};save();prices();price();render();alert('Prices saved.')}
+ else if(a==='settings'){var w=$('swa').value.replace(/\D/g,''),p=$('spw').value;if(w)S.wa=w;if(p){if(p.length<4){alert('Password must be at least 4 characters.');return}S.pw=p}save();render();alert('Settings saved.')}
+});
+$('admin').addEventListener('change',function(e){
+ var t=e.target;if(t.dataset.act==='tpay'){var T3=S.tours.filter(function(x){return x.id===+t.dataset.id})[0];if(T3)T3.teams.forEach(function(m){if(m.id===+t.dataset.tid)m.paid=t.value==='paid'});save();render();return}if(t.dataset.act==='bdate'){ad=t.value;render();return}if(t.dataset.act==='blk'){var day2=ad||d.value,hh=+t.dataset.h;S.blocks=S.blocks.filter(function(k){return !(k.date===day2&&k.hour===hh)});if(t.checked)S.blocks.push({date:day2,hour:hh});save();render();draw();return}if(t.dataset.act==='pay'){S.bookings.forEach(function(b){if(b.id===+t.dataset.id)b.paid=t.value==='paid'});save();render();return}if(t.dataset.act==='status'){S.bookings.forEach(function(b){if(b.id===+t.dataset.id)b.status=t.value});save();render();draw()}
+});
+$('admin').addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.id==='pw'){$('admin').querySelector('[data-act="login"]').click()}});
+var taps=0,tapT,br=document.querySelector('nav b');
+if(br)br.addEventListener('click',function(){taps++;clearTimeout(tapT);tapT=setTimeout(function(){taps=0},2500);if(taps>=5){taps=0;location.hash='admin'}});
+document.addEventListener('keydown',function(e){if(e.altKey&&(e.key==='a'||e.key==='A'))location.hash='admin'});
+window.addEventListener('hashchange',route);
+prices();tours();draw();route();
+})();
+</script>
+</body>
+</html>
+0 commit comments
+Comments
+0
+ (0)
+Comment
+You're not receiving notifications from this thread.
+
+There are no files selected for viewing
